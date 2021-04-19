@@ -22,48 +22,29 @@
             let dom = document.querySelector('#root')
 
             let title = "React page."
-            let message = "メッセージを表示します。"
+            let message = "データを表示します。"
 
-            let data = [
-                {name: 'Taro', mail: 'taro@yamada', age:45},
-                {name: 'Hanako', mail: 'hanako@flower', age:37},
-                {name: 'Sachiko', mail: 'sachiko@happy', age:29},
-                {name: 'Jiro', mail: 'jiro@change', age:18},
-                {name: 'Kumi', mail: 'kumi@class', age:56}
-            ]
+            var counter = 0            
             
-            let el = (
-                <div>
-                    <h4>
-                        {title}
-                    </h4>
-                    <h6>                 
-                        {message}
-                    </h6>
-                    <table className="table table-striped mt-4">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>name</th>
-                                <th>mail</th>
-                                <th>age</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                data.map((value) =>(
-                                    <tr>
-                                        <th>{value.name}</th>
-                                        <th>{value.mail}</th>
-                                        <th>{value.age}</th>
-                                    </tr> 
-                                ))
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            ) 
-            // レンダリング
-            ReactDOM.render(el, dom);
+            setInterval(() => {
+                counter++
+
+                let el = (
+                    <div>
+                        <h4>
+                            {title}
+                        </h4>
+                        <h6>                 
+                            {message}
+                        </h6>
+                        <h5 className="alert alert-primary">
+                            count : {counter}.
+                        </h5>
+                    </div>
+                )
+                // レンダリング
+                ReactDOM.render(el, dom)
+            },1000)
         </script>
     </body>
 </html>
