@@ -26,7 +26,7 @@
 
             var counter = 0            
             
-            setInterval(() => {
+            let doAction = (event) => {
                 counter++
 
                 let el = (
@@ -37,14 +37,16 @@
                         <h6>                 
                             {message}
                         </h6>
-                        <h5 className="alert alert-primary">
+                        <h5 className="alert alert-primary" onClick={doAction}>
                             count : {counter}.
                         </h5>
                     </div>
                 )
                 // レンダリング
                 ReactDOM.render(el, dom)
-            },1000)
+            }
+
+            doAction()
         </script>
     </body>
 </html>
