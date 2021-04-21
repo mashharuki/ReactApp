@@ -22,22 +22,15 @@
             let dom = document.querySelector('#root')
 
             let message = "React component page."           
-            // 関数コンポーネント
-            function Welcome (props) {
-                return (
-                    <div className="alert alert-primary">
-                        <Calc classes={props.classes} number={props.number} />
-                    </div>
-                )
-            }
-
-            // 計算する関数
-            function Calc(props) {
-                let total = 0
-                for (let i = 1; i <= props.number; i++ ) {
-                    total += i
+            // クラス
+            class Hello extends React.Component {
+                constructor (props) {
+                    super (props)
                 }
-                return <p className={props.classes}>1から{props.number}までの合計は、「{total}」です。</p>
+                // レンダリング
+                render () {
+                    return <div className="alert alert-primary"><p className="h4">Hello!</p></div>
+                }
             }
 
             // 表示するJSX
@@ -46,10 +39,7 @@
                     <h5 className="mb-4">
                         {message}    
                     </h5>
-                    <Welcome number="10" classes="h3"/>
-                    <Welcome number="100" classes="h5"/>
-                    <Calc number="50" classes="h4" />
-                    <Calc number="500" classes="h6" />
+                    <Hello/>
                 </div>
             )
             // レンダリング
