@@ -21,39 +21,39 @@
         <script type="text/babel">
             let dom = document.querySelector('#root')
 
-            let title = "React page."
-            let message = "お名前をどうぞ。"
-            let in_val = "";           
-            
-            let doChange = (event) => {
-                in_val = event.target.value
-                message = 'こんにちは、' + in_val + 'さん！!'
-            }
-
-            let doAction = (event) => {
-
-                let el = (
-                    <div>
-                        <h4>
-                            {title}
-                        </h4>
-                        <h6>                 
-                            {message}
-                        </h6>
-                        <div className="alert alert-primary">
-                            <div className="form-group">
-                                <label>Input:</label>
-                                <input type="text" className="form-control" id="input" onChange={doChange} />
-                            </div>
-                            <button onClick={doAction} className="btn btn-primary">Click</button>
-                        </div>
+            let message = "React component page."           
+            // 関数コンポーネント
+            function Welcome (props) {
+                return (
+                    <div className="alert alert-primary">
+                        <Calc classes={props.classes} number={props.number} />
                     </div>
                 )
-                // レンダリング
-                ReactDOM.render(el, dom)
             }
 
-            doAction()
+            // 計算する関数
+            function Calc(props) {
+                let total = 0
+                for (let i = 1; i <= props.number; i++ ) {
+                    total += i
+                }
+                return <p className={props.classes}>1から{props.number}までの合計は、「{total}」です。</p>
+            }
+
+            // 表示するJSX
+            let el = (
+                <div>
+                    <h5 className="mb-4">
+                        {message}    
+                    </h5>
+                    <Welcome number="10" classes="h3"/>
+                    <Welcome number="100" classes="h5"/>
+                    <Calc number="50" classes="h4" />
+                    <Calc number="500" classes="h6" />
+                </div>
+            )
+            // レンダリング
+            ReactDOM.render(el, dom)
         </script>
     </body>
 </html>
